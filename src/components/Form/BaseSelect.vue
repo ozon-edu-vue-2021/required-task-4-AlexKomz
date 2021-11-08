@@ -89,6 +89,16 @@ export default {
   position: relative;
 }
 
+.dropdown:before {
+  content: ">";
+  position: absolute;
+
+  right: 5px;
+  bottom: 0;
+
+  transform: rotate(90deg);
+}
+
 .dropdown__list {
   position: absolute;
   list-style: none;
@@ -100,6 +110,8 @@ export default {
   border-left: 1px solid black;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
+  background-color: white;
+  z-index: 100;
 }
 
 .dropdown__item {
