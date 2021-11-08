@@ -68,7 +68,7 @@ export default {
 
 <style scoped>
 .input {
-  min-width: 250px;
+  min-width: 300px;
   width: 100%;
 }
 
