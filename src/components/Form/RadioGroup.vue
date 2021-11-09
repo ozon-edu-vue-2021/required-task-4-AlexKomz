@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { generateRandomId } from "../../utils";
+import { generateRandomId } from "../../utils/utils";
 
 import BaseRadio from "./BaseRadio";
 
