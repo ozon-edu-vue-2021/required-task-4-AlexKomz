@@ -2,6 +2,7 @@
   <div v-click-outside="closeDropdownHandler" class="dropdown">
     <BaseInput
       @click.native="toggleOpenHandler"
+      ref="input"
       :label="label"
       :value.sync="inputValue"
       :placeholder="placeholder"
@@ -72,8 +73,12 @@ export default {
       this.isOpen = false;
     },
     itemClickHandler(value) {
+      if (this.value === value) {
+        this.$refs.input.$forceUpdate();
+      }
+
       this.$emit(`update:value`, value);
-      this.toggleOpenHandler();
+      this.closeDropdownHandler();
     },
     filterData(value) {
       this.filteredData = this.data.filter((item) =>
