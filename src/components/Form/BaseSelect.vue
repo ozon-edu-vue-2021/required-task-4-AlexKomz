@@ -81,6 +81,13 @@ export default {
       );
     },
   },
+  watch: {
+    isOpen() {
+      if (!this.isOpen && this.inputValue) {
+        this.inputValue = ``;
+      }
+    },
+  },
 };
 </script>
 
