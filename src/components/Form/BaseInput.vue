@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { generateRandomId } from "../../utils";
+import { generateRandomId } from "../../utils/utils";
 
 import WithLabel from "../HOC/WithLabel";
 
@@ -81,5 +81,7 @@ export default {
   position: absolute;
   margin-top: 5px;
   color: red;
+  font-size: 0.75em;
+  max-width: 300px;
 }
 </style>
