@@ -137,7 +137,8 @@
 import citizenships from "../assets/data/citizenships.json";
 import passportTypes from "../assets/data/passport-types.json";
 
-import { defaultInputControlFactory, VALIDATE, validator } from "../utils";
+import { defaultInputControlFactory } from "../utils/utils";
+import { validate, validator } from "../utils/validator";
 
 import BaseInput from "./Form/BaseInput";
 import BaseSelect from "./Form/BaseSelect";
@@ -215,35 +216,35 @@ export default {
   methods: {
     isValidForm() {
       let result = [
-        validator[VALIDATE.RUSSIAN](this.controls.surname),
-        validator[VALIDATE.RUSSIAN](this.controls.name),
-        validator[VALIDATE.RUSSIAN](this.controls.patronymic),
-        validator[VALIDATE.DATE](this.controls.dateOfBirth),
-        validator[VALIDATE.MAIL](this.controls.email),
-        validator[VALIDATE.DIGIT](this.controls.passport.number),
-        validator[VALIDATE.LENGTH](this.controls.passport.number, 6),
+        validator[validate.RUSSIAN](this.controls.surname),
+        validator[validate.RUSSIAN](this.controls.name),
+        validator[validate.RUSSIAN](this.controls.patronymic),
+        validator[validate.DATE](this.controls.dateOfBirth),
+        validator[validate.MAIL](this.controls.email),
+        validator[validate.DIGIT](this.controls.passport.number),
+        validator[validate.LENGTH](this.controls.passport.number, 6),
       ];
 
       if (this.controls.citizenship.value === `Russia`) {
         result = [
           ...result,
-          validator[VALIDATE.DATE](this.controls.passport.date),
-          validator[VALIDATE.DIGIT](this.controls.passport.series),
-          validator[VALIDATE.LENGTH](this.controls.passport.series, 4),
+          validator[validate.DATE](this.controls.passport.date),
+          validator[validate.DIGIT](this.controls.passport.series),
+          validator[validate.LENGTH](this.controls.passport.series, 4),
         ];
       } else {
         result = [
           ...result,
-          validator[VALIDATE.ENGLISH](this.controls.passport.surname),
-          validator[VALIDATE.ENGLISH](this.controls.passport.name),
+          validator[validate.ENGLISH](this.controls.passport.surname),
+          validator[validate.ENGLISH](this.controls.passport.name),
         ];
       }
 
       if (this.personalChanged.value === `yes`) {
         result = [
           ...result,
-          validator[VALIDATE.RUSSIAN](this.controls.prevSurname),
-          validator[VALIDATE.RUSSIAN](this.controls.prevName),
+          validator[validate.RUSSIAN](this.controls.prevSurname),
+          validator[validate.RUSSIAN](this.controls.prevName),
         ];
       }
 
@@ -284,7 +285,7 @@ export default {
         };
       }
 
-      if (this.personalChanged) {
+      if (this.personalChanged.value === `yes`) {
         formData = {
           ...formData,
           prevSurname: this.controls.prevSurname.value,
