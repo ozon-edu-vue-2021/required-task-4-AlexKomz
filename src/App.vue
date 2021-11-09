@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <Form />
+    <div class="form-container">
+      <Form />
+    </div>
   </div>
 </template>
 
@@ -32,5 +34,10 @@ body,
 
 * {
   box-sizing: border-box;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
 }
 </style>
